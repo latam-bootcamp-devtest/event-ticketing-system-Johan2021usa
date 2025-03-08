@@ -1,0 +1,38 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  background-color: var(--clr-azure-950);
+  min-height: 100vh;
+  padding: 0 10rem;
+}
+.dashboard__title-cont {
+  // border: 1px solid red;
+}
+.dashboard__card-cont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+.dashboard__title {
+  color: var(--clr-azure-50);
+  /* style weight size/line-height family*/
+  font: normal 400 2rem/1rem var(--global-font);
+}
+.dashboard__card-empty {
+  font: normal 400 1rem/1.5rem var(--global-font);
+  color: var(--clr-azure-50);
+}
+.--fadeIn {
+  animation: fadeInAn 200ms alternate ease-in-out;
+}
+
+@keyframes fadeInAn{
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}

@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  // Colors
+  --clr-azure-50: #f0f5fe;
+  --clr-azure-100: #dde7fc;
+  --clr-azure-200: #c3d6fa;
+  --clr-azure-300: #9abdf6;
+  --clr-azure-400: #6a9af0;
+  --clr-azure-500: #5682ec;
+  --clr-azure-600: #3159df;
+  --clr-azure-700: #2946cc;
+  --clr-azure-800: #273aa6;
+  --clr-azure-900: #253583;
+  --clr-azure-950: #1b2250;
+
+  // Fonts:
+  --global-font: "Jost", sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
