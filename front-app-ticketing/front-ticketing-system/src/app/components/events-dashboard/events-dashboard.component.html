@@ -1,7 +1,6 @@
 <section class="dashboard">
   <!-- Title -->
   <article class="dashboard__title-cont">
-
     <h3 class="dashboard__title">Upcoming events</h3>
   </article>
 
@@ -12,13 +11,21 @@
     } @empty {
       <p class="dashboard__card-empty">There aren't available events... :C</p>
     }
-
-    <!-- <app-event-detail #eventDetail/> Pending investigation -->
-
-    <dialog #eventDetail>
-      pending info
+    <!-- <app-event-detail #eventDetail ></app-event-detail> -->
+    <dialog class="dialog" #eventDetail>
+    @if (eventDetailInfo) {
+        <img src="{{eventDetailInfo.image}}" alt="" class="dialog__img">
+        <h3 class="dialog__title">{{eventDetailInfo.name}}</h3>
+        <p class="dialog__detail">{{eventDetailInfo.date}}</p>
+        <p class="dialog__detail">{{eventDetailInfo.location}}</p>
+        <h5 class="dialog__sub-title">{{eventDetailInfo.description}}</h5>
+        <p class="dialog__detail">{{eventDetailInfo.price}}</p>
+        <p class="dialog__detail">{{eventDetailInfo.availableTickets}}</p>
+        <button>Book ticket</button>
+      }
     </dialog>
 
   </section>
+
 
 </section>

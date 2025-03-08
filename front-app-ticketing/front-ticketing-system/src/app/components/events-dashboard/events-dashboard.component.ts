@@ -1,20 +1,22 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EventCardComponent } from "../event-card/event-card.component";
 import { DashboardEventsService } from '../../service/dashboard-service/dashboard-events.service';
 import { Events } from '../../interfaces/dashboard/events';
 import { InfoCard } from '../../interfaces/dashboard/info-card';
+import { EventDetail } from '../../interfaces/dashboard/event-detail';
 import { EventDetailComponent } from "../event-detail/event-detail.component";
 
 @Component({
   selector: 'app-events-dashboard',
   standalone: true,
-  imports: [EventCardComponent, EventDetailComponent],
+  imports: [EventCardComponent],
   templateUrl: './events-dashboard.component.html',
   styleUrl: './events-dashboard.component.scss'
 })
-export class EventsDashboardComponent implements OnInit{
+export class EventsDashboardComponent implements OnInit, AfterViewInit{
   eventsInfo!: Events;
-  @ViewChild('eventDetail') eventDetail!: ElementRef;
+  eventDetailInfo!: EventDetail;
+  @ViewChild('eventDetail', {read: ElementRef}) eventDetail!: ElementRef;
 
   constructor(private dashboardEventService: DashboardEventsService){}
 
@@ -26,9 +28,15 @@ export class EventsDashboardComponent implements OnInit{
 
   }
 
+  ngAfterViewInit(): void {
+
+  }
+
   eventDetails(id: InfoCard["id"]){
-    console.log("event id: ", id);
-    this.dashboardEventService.getEventDetails(id);
+    this.eventDetail.nativeElement.showModal();
+    this.dashboardEventService.getEventDetails(id).then((prom)=>{
+      prom.subscribe((res)=> this.eventDetailInfo = res);
+    });
     // this.eventDetail.nativeElement.showModal();
   }
 }
